@@ -315,6 +315,7 @@ RectTransform:
   - {fileID: 1639129125}
   - {fileID: 645187683}
   - {fileID: 1626988014}
+  - {fileID: 800230649}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -670,17 +671,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 800230648}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.1788473, y: 2.1788473, z: 2.1788473}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2020031817}
-  m_RootOrder: 0
+  m_Father: {fileID: 253120580}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 195, y: -85}
+  m_AnchoredPosition: {x: 424.87518, y: -185.20204}
   m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &800230651
@@ -783,6 +784,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 477a76ff29832b2499b9244de7070326, type: 3}
   gravity: -9.8
   strength: 5
+  flapSound: {fileID: 8300000, guid: b52d94c8d23cd7642b3bb0f21050ba97, type: 3}
+  hitSound: {fileID: 8300000, guid: fe808b9c89c4a3647be38a86ec8aa291, type: 3}
 --- !u!58 &1451646790
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1340,8 +1343,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 800230649}
+  m_Children: []
   m_Father: {fileID: 1419897489}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

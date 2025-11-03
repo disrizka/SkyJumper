@@ -3,61 +3,78 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   public Player player;
-   public Text scoreText;
-   public Text coinText;
-   public GameObject playButton;
-   public GameObject gameOver;
+    public Player player;
+    public Text scoreText;
+    public Text coinText;
+    public GameObject playButton;
+    public GameObject gameOver;
 
-   private int score;
-   private int coins;
+    private int score;
+    private int coins;
+    private bool isGameOver = false;
 
-   public void Awake()
-   {
-      Application.targetFrameRate = 60;
-      Pause();
-   }
+    public void Awake()
+    {
+        Application.targetFrameRate = 60;
+        Pause();
+    }
 
-   public void Play()
-   {
-      score = 0;
-      coins = 0;
-      scoreText.text = score.ToString();
-      
-      if(coinText != null)
-      {
-         coinText.text = "Coins: " + coins.ToString();
-      }
+    public void Play()
+    {
+        score = 0;
+        coins = 0;
+        isGameOver = false;
+        
+        scoreText.text = score.ToString();
+        
+        if(coinText != null)
+        {
+            coinText.text = "Coins: " + coins.ToString();
+        }
 
-      playButton.SetActive(false);
-      gameOver.SetActive(false);
+        playButton.SetActive(false);
+        gameOver.SetActive(false);
 
-      Time.timeScale = 1f;
-      player.enabled = true;
+        Time.timeScale = 1f;
+        player.enabled = true;
 
-      Pipes[] pipes = FindObjectsOfType<Pipes>();
+        // Reset posisi player ke tengah
+        player.transform.position = Vector3.zero;
 
-      for (int i = 0; i < pipes.Length; i++)
-      {
-         Destroy(pipes[i].gameObject);
-      }
-   }
+        // Destroy semua pipes yang ada
+        Pipes[] pipes = FindObjectsOfType<Pipes>();
+        for (int i = 0; i < pipes.Length; i++)
+        {
+            Destroy(pipes[i].gameObject);
+        }
 
-   public void Pause()
-   {
-      Time.timeScale = 0f;
-      player.enabled = false;
-   }
+        // Destroy semua coins yang ada
+        Coin[] coins_obj = FindObjectsOfType<Coin>();
+        for (int i = 0; i < coins_obj.Length; i++)
+        {
+            Destroy(coins_obj[i].gameObject);
+        }
+    }
 
-   public void GameOver()
-   {
-      gameOver.SetActive(true);
-      playButton.SetActive(true);
+    public void Pause()
+    {
+        Time.timeScale = 0f;
+        player.enabled = false;
+    }
 
-      Pause();
-   }
+    public void GameOver()
+    {
+        // Cegah multiple game over calls
+        if (isGameOver) return;
+        
+        isGameOver = true;
+        gameOver.SetActive(true);
+        playButton.SetActive(true);
 
-   public void IncreaseScore()
+        Pause();
+    }
+
+ public void IncreaseScore()
    {
       score++;
       scoreText.text = score.ToString();
